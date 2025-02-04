@@ -14,6 +14,9 @@ export default {
       },
       fontFamily: {
         nightmare: "Nightscary Free Trial, sans-serif",
+        creepy: "Matter Of Fact, sans-serif",
+        raven: "Raven Song, sans-serif",
+        ghost: "Ghost Terror, sans-serif",
       },
     },
   },
