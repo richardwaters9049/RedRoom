@@ -2,12 +2,14 @@
 
 import React from "react";
 // import RedDoorPicSlider from "../components/  RedDoorPicSlider";
+import VirtualM from "../components/VirtualM";
 
 const page = () => {
     return (
         <div className="welcome-container">
             <div className="inner-container p-5 flex flex-col items-center justify-center">
                 <div className="info-container flex flex-col gap-6 p-1 bg-black text-white bg-opacity-65 justify-center items-center">
+                    <VirtualM />
                     <h1 className="text-4xl text-center py-4">Welcome to the Red Room</h1>
                     <div className="para-container flex flex-col gap-8 p-5 text-lg">
                         <p>You are a hacker that has been caught in the Red Room.</p>
