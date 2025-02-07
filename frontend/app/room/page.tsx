@@ -6,13 +6,13 @@ import VirtualM from "../components/VirtualM";
 
 const page = () => {
     return (
-        <div className="welcome-container">
+        <div className="welcome-container w-full h-screen bg-red-600">
             <VirtualM />
             <div className="inner-container p-5 flex flex-col items-center justify-center">
 
-                <div className="info-container flex flex-col gap-6 p-1 bg-black text-white bg-opacity-65 justify-center items-center">
+                <div className="info-container flex flex-col gap-6 p-1 bg-black text-white bg-opacity-65 justify-center items-center w-screen h-screen">
                     <h1 className="text-9xl text-center py-4 font-creepy tracking-wide">Welcome..</h1>
-                    <div className="para-container flex flex-col gap-8 p-5 text-xl font-raven tracking-wide">
+                    <div className="para-container flex flex-col gap-12 p-5 text-2xl font-raven tracking-wide">
                         <p>You are a hacker that has been caught in the Red Room.</p>
                         <p>
                             To escape, you must answer a series of riddles correctly.
@@ -30,7 +30,7 @@ const page = () => {
                         <p>Now, are you ready to play?</p>
 
                         <div className="btn-container">
-                            <button className="btn btn-primary bg-green-600 py-4 px-8 rounded-md text-xl">Play</button>
+                            <button className="btn btn-primary bg-green-600 py-6 px-10 rounded-md text-3xl">Play</button>
                         </div>
                     </div>
 
