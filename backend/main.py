@@ -1,49 +1,29 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
-import pygame
 import threading
+from redroom_vm import start_fake_vm
 
+# Initialize FastAPI app
 app = FastAPI()
 
-# ✅ Enable CORS for frontend requests
+# Enable CORS (Allows frontend to communicate with the backend)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Change this to frontend URL in production
+    allow_origins=["*"],  # Change this to the frontend URL in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
-# ✅ Redirect root ("/") to "/start_vm"
-@app.get("/")
-def redirect_root():
-    return RedirectResponse(url="/start_vm")
-
-
-# Function to start the fake VM
-def run_fake_vm():
-    pygame.init()
-    screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-    pygame.display.set_caption("Red Room OS")
-    font = pygame.font.Font(None, 50)
-    text = font.render("ACCESS GRANTED. WELCOME TO THE RED ROOM...", True, (255, 0, 0))
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        screen.fill((0, 0, 0))
-        screen.blit(text, (100, 100))
-        pygame.display.flip()
-
-
-# ✅ Start the VM when requested
+# Route to start the virtual machine (Triggered when "Play" is clicked)
 @app.get("/start_vm")
-def start_vm():
-    thread = threading.Thread(target=run_fake_vm)
-    thread.start()
-    return {"message": "Virtual Machine started"}
+async def start_vm():
+    threading.Thread(target=start_fake_vm).start()
+    return {"message": "Virtual Machine is starting..."}
+
+
+# Root endpoint
+@app.get("/")
+async def root():
+    return {"message": "RedRoom Backend is Running"}
